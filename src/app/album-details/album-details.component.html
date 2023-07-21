@@ -1,0 +1,32 @@
+        <div class="aside" *ngIf="album">
+            <img class="card-img-top" src="../../assets/images/satoru-gojo-jujutsu-kaisen_3840x2160_xtrafondos.com.jpg" alt="Group Music">
+            <div class="card-body">
+                <h5 class="card-title"> {{album.title}}</h5>
+                <p>Name : {{album.name}}</p>
+                <p class="card-text">{{album.ref}}</p>
+                <a href="#" class="btn btn-primary">Play >> </a>
+            </div>
+            <ul class="list-group">
+                <li *ngFor="let lis of list.list"> {{lis}}</li>
+            </ul>
+    </div>
+    <style>
+        .aside{
+            /* float: left; */
+            border-radius:10px;
+            /* padding: 1rem;  */      
+            border:1px solid #ccc;
+        } 
+        .aside li{
+            padding: .5rem 1rem;
+            border:1px solid #ccc;
+            list-style: none;
+
+        }
+        .card-body{
+            margin: 1rem;
+        }
+        /* img{
+            width: auto;
+        } */
+    </style>

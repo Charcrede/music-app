@@ -1,0 +1,67 @@
+<div class="wrapper">
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <a>app-music</a>
+                </li>
+                <li>
+                    <a>Home</a>
+            </li>
+            <li>
+                <a>Se connecter</a>
+            </li>
+        </ul>
+        <div class="search"> 
+            <input type="text" placeholder="Search">
+            <button>Search</button>
+        </div>
+    </nav>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1">Previous</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="#">1</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="#">2</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="#">3</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <h1> {{ titlePage }} </h1>
+    <div>
+        <app-album-details [album]="selectedAlbum" [list]="selectedListe">  </app-album-details>
+    </div>
+    <div class="lesCards">
+        <div class="card" *ngFor="let album of albums" class="liAlbums">
+            <div class="genre">
+                {{album.ref}}
+            </div>
+            <div class="card-body">
+                <h3> {{album.title}} </h3>
+                <p>{{album.description}}</p>
+                <a href="#" *ngFor="let tag of album.tags" class="tag"> {{tag}} </a>
+                <div class="lang-like-dur">
+                    <a href="#" role="button">fr</a>
+                    <img class="glyph-icon" src="./assets/svg/si-glyph-heart.svg" />
+                    <small>{{album.like}}</small>
+                    <img class="glyph-icon" src="./assets/svg/si-glyph-timer.svg" />
+                    <small>{{album.duration}} min</small>
+                    <button class="view" (click)="onSelect(album)"> View More</button>
+                </div>
+            </div>
+    </div>
+    </div>
+</main>
+
+</div>

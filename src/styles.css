@@ -1,1 +1,144 @@
-/* You can add global styles to this file, and also import other style files */
+.wrapper{
+    /* font-size: 1rem; */
+    max-width: 900px;
+    margin-inline: auto;
+    font-family: sans-serif;
+}
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+nav ul{
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    padding: 0;
+    margin: 0;
+}
+.ulAlbums{
+    list-style: none;
+    margin: 0;
+    /* padding: 1rem; */
+}
+.liAlbums{
+    border: 1px solid #ccc;
+    margin: 1rem;
+    border-radius: 10px;
+}
+.genre{
+    background-color: #eee;
+    display: block;
+    padding: .5rem 1rem;
+    border-bottom: 1px solid #ccc;
+    border-top-left-radius:10px ;
+    border-top-right-radius:10px ;
+}
+.liAlbums h3{
+    padding: .5rem;
+}
+.liAlbums p{
+    padding: .5rem;
+}
+.lang-like-dur{
+    display: flex;
+    gap: .5rem;
+    padding: 1rem;
+    align-items: center;
+}
+.lang-like-dur a:first-of-type{
+    padding: .7rem;
+    border: 1px solid black;
+    border-radius: 5px;
+    text-decoration: none;
+    color: black;
+
+}
+.dflex{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.glyph-icon {
+    height: .75rem;
+    display: inline-block; margin:0.25rem;
+ }
+ .tag{
+    text-decoration: none;
+    border: 1px solid #ccc;
+    margin: .5rem;
+    padding:.5rem 1rem;
+    border-radius: 10px;
+    background-color: #20a0b7;
+    color: #eee;
+ }
+ a{
+    display: inline-block;
+    text-decoration: none;
+ }
+ a:hover{
+    transform: translateY(-2px);
+    box-shadow: 0px 0px 10px black;
+
+ }
+ nav input, nav button{
+    padding:.5rem 1rem;
+    margin: 5px;
+ }
+ nav button, .view{
+    border:1px solid #20a0b7;
+    background-color:  #fff;
+    color: #20a0b7;
+ }
+ nav button:hover, .view:hover{
+    color: #fff;
+    background-color: #20a0b7;
+ }
+ .pagination{
+    /* margin-top: 0.5rem; */
+    gap: 0;
+    margin-inline: auto;
+ }
+ .pagination li{
+    border:1px solid #ccc;
+    margin: 0;
+    padding:.5rem .7rem;
+ }
+ .principal {
+    height: 8rem;
+    margin: 0 4.5rem;
+    border-radius: 0.25rem;
+    padding: 1rem;
+  }
+  
+  .content {
+    margin-top: 1rem;
+  }
+  
+  .music .card, .music .pagination {
+    margin-top: 0.5rem;
+  }
+  .music .btn {
+    display: inline-block;
+    margin: 0 0.6rem;
+  }
+  
+  .glyph-icon {
+    height: 0.75rem;
+    display: inline-block;
+    margin: 0.25rem;
+  }
+  main{
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  main h1{
+    grid-column:1/ -1;
+  }
+  main .lesCards{
+    grid-column: 2/ 4;
+  }
+  main .aside{
+    grid-column: 1/2;
+  }
