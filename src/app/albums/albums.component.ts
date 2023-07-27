@@ -1,34 +1,41 @@
 import { Component, OnInit } from '@angular/core';
-import { Album, List } from "../../album";
-import { ALBUMS } from "../mock-albums/mock-albums";
-import { ALBUM_LISTS } from "../mock-albums/mock-albums";
-
+import { Album, Gender } from "../../album";
+import { AlbumService } from '../album.service';
+import { GENRE } from "../mock-albums/mock-albums";
 @Component({
   selector: 'app-albums',
   templateUrl: './albums.component.html',
   styleUrls: ['./albums.component.css']
 })
-export class AlbumsComponent implements OnInit{
+export class AlbumsComponent implements OnInit {
   titlePage: string = 'Page principale Albums Music'
-  albums: Album[] = ALBUMS;
-  lists:List[] = ALBUM_LISTS;
   selectedAlbum!: Album;
-  selectedListe!:List;
-  constructor(){ };
-  transformer(nomb: string) : number{
-    return Number(nomb);
+  albums: Album[] = [];
+  genre: Gender[]= GENRE;
+  page1!: Album[];
+  page2!: Album[];
+  page3!: Album[];
+  click: number = 0;
+  constructor(private service: AlbumService) { };
+  onSelect(album: Album) {
+    this.selectedAlbum = this.service.getAlbum(album.id);
+  };
+  onClick(genre: Gender) {
+    this.albums = this.service.getRefs(genre.ref);
+    console.log(genre);
+    
+  };
+  playParent(album: Album) {
+    return this.service.playParent(album)
   }
-  onSelect(album: Album){
-    this.selectedAlbum = album;
-    this.lists.forEach(el => {
-      if (el.id === album.id) {
-        this.selectedListe = el;
-        console.log(album);
-        
-        console.log(this.selectedListe);
-        
-      }
-    });
+  showResult($event:Album[]){
+    return this.albums = $event;
   }
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.page1 = this.service.paginate(0, Math.floor(this.service.count() / 3));
+    this.page2 = this.service.paginate(Math.floor(this.service.count() / 3), (Math.floor(this.service.count() / 3) * 2));
+    this.page3 = this.service.paginate((Math.floor(this.service.count() / 3) * 2), this.service.count());
+    this.albums = this.service.paginate(0, this.service.count());
+  }
 }
+

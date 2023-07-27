@@ -1,0 +1,38 @@
+
+.navbar-brand {
+    padding: .5rem .7rem;
+}
+
+
+[routerLinkActive="active"] {
+    color: white;
+}
+.body{
+    height: 100vh;
+    background: url(../../assets/media/background_image/2725544.jpg)no-repeat fixed center /cover;
+    overflow: hidden;
+    padding-inline: 200px;
+}
+.card{
+    background-color: rgba(255, 255, 255, .8);
+}
+.nav-link, .navbar-brand{
+    margin-left: 1rem;
+    border: 1px solid white;
+    color: white;
+}
+.nav-link:hover{
+    color: black;
+}
+.disque{
+    width: 60px;
+    animation: rote 2s infinite;
+}
+@keyframes rote {
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}

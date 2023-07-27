@@ -1,0 +1,13 @@
+.body{
+    background: black url(../../assets/media/home-desktop-dark.webp) no-repeat fixed center ;
+    height: 100vh;
+    font-size: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    color: antiquewhite;
+    align-items: center;
+}
+.body a{
+    font-size: 5rem;
+}

@@ -10,10 +10,16 @@ export class Album {
         public url?: string,
         public tags?: Array<string>,
         public like?: string) { }
+        public state?: boolean;
 };
 export class List {
     constructor(
         public id: string,
         public list: Array<string>
     ) { }
+}
+export class Gender{
+    constructor(
+      public ref: string,
+      public url: string){}
 }

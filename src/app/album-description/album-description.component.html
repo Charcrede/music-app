@@ -1,0 +1,76 @@
+<div class="body">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <a><img src="../../assets/media/website_logo.svg" alt="" class="disque"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link btn btn-outline-light" href="">Home
+          </a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link btn btn-outline-light" routerLink="/login" routerLinkActive="active">Se connecter
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div aria-label="Page navigation example" class="pagination">
+      <ul class="pagination justify-content-center">
+        <li class="page-item disabled">
+          <a class="page-link" href="#" tabindex="-1">Previous</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">1</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">2</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">3</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">Next</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="row content">
+    <div class="description card">
+      <div class="card-header" id="{{album.id}}">
+        {{album.ref}}
+      </div>
+      <div class="card-body">
+        <a class="card-title" routerLink="/album/{{album.id}}"> {{album.title}} </a>
+        <p class="card-text">{{album.description}}</p>
+        <a href="#" *ngFor="let tag of album.tags" class="badge bg-primary"> {{tag}} </a> <br>
+        <p>Like: {{album.like}}</p>
+        <p>Duration: {{album.duration}} min</p>
+        <div class="row justify-content-center"><img src="{{album.url}}" alt=""></div>
+      </div>
+    </div>
+    <style>
+      .card img {
+        width: 50%;
+        margin-inline: auto;
+      }
+
+      .description {
+        width: 50%;
+        margin-inline: auto;
+        padding: 0;
+      }
+
+      .card-title {
+        color: #20a0bb;
+        font-weight: bold;
+        font-size: 1.2em;
+      }
+
+      a {
+        text-decoration: none;
+        margin: .5rem;
+      }
+    </style>

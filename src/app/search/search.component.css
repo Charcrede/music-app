@@ -1,0 +1,8 @@
+.searchForm{
+    display: flex;
+    gap: 1rem;
+    flex-basis: 50%;
+}
+.searchForm input{
+    width: 400px;
+}

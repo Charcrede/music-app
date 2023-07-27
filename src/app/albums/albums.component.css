@@ -1,0 +1,109 @@
+.collapse{
+    justify-content: space-between;
+}
+.nav-link, .navbar-brand{
+    margin-left: 1rem;
+    border: 1px solid white;
+    color: white;
+}
+.nav-link:hover{
+    color: black;
+}
+
+  [routerLinkActive="active"] {
+    color: white;
+}
+.principal{
+    height: auto;
+}
+.container-fuild{
+    background: url(../../assets/media/background_image/3541800.jpg) fixed 100%;
+    margin: 0;
+    padding: 16px 200px;
+}
+.disque{
+    width: 60px;
+    animation: rote 2s infinite;
+}
+@keyframes rote {
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
+.genre{
+    position: relative;
+    width: 500px;
+    height: 250px;
+    overflow: hidden;
+}
+.genre img{
+    transition: 2s;
+    width:100%;
+    height: 100%;
+}
+.genre .text{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0;
+    bottom:0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 3rem;
+}
+.lesGenres{
+    display: flex;
+    gap: 1rem;
+    margin-bottom:5rem;
+}
+.genre:hover img{
+    transform: scale(1.3);
+}
+.card{
+    background-color: rgba(255, 255, 255, .8);
+}
+h1{
+    color: #fff;
+    margin-bottom: 50px;
+    text-align: center;
+}
+.notfound{
+    font-size: 8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: -400px;
+    width: 100%;
+  }
+  .par{
+    font-size: 3.9rem;
+  }
+  .a{
+    text-decoration: none;
+    padding: 1rem 2rem;
+  }
+  .card-title{
+    color:#20a0bb;
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+  a.card-title:hover{
+    transform: scale(1.56);
+  }
+  .video{
+    position: relative;
+  }
+  .sticky{
+    position: sticky;
+    top: 50px;
+  }
+  .pagination{
+    padding: 0;
+  }

@@ -1,4 +1,4 @@
-import { Album, List } from '../../album';
+import { Album, List, Gender } from '../../album';
 
 export const ALBUMS: Album[] = [
     {
@@ -276,7 +276,8 @@ export const ALBUM_LISTS : List[]  = [
     }
   ];
 
-  export class StatusHideAlbum{
-      id : string;
-      visibility : boolean;
-  }
+  export const genre: Gender = [
+    {
+      'ref' = 
+      'url' = 
+  }]

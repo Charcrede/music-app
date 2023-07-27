@@ -1,67 +1,91 @@
-<div class="wrapper">
-    <header>
-        <nav>
-            <ul>
-                <li>
-                    <a>app-music</a>
-                </li>
-                <li>
-                    <a>Home</a>
-            </li>
-            <li>
-                <a>Se connecter</a>
-            </li>
-        </ul>
-        <div class="search"> 
-            <input type="text" placeholder="Search">
-            <button>Search</button>
-        </div>
-    </nav>
-    <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
-            <li class="page-item disabled">
-                <a class="page-link" href="#" tabindex="-1">Previous</a>
-            </li>
-            <li class="page-item">
-                <a class="page-link" href="#">1</a>
-            </li>
-            <li class="page-item">
-                <a class="page-link" href="#">2</a>
-            </li>
-            <li class="page-item">
-                <a class="page-link" href="#">3</a>
-            </li>
-            <li class="page-item">
-                <a class="page-link" href="#">Next</a>
-            </li>
-        </ul>
-    </nav>
-</header>
-<main>
+<div class="container-fuild principal">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <a><img src="../../assets/media/website_logo.svg" alt="" class="disque"></a>
+    <!-- <a class="navbar-brand" href="">app music</a> -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link btn btn-outline-light" routerLink="/albums" routerLinkActive="active">Home
+          </a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link btn btn-outline-light" routerLink="/login">Se connecter
+          </a>
+        </li>
+      </ul>
+      <app-search (result)="showResult($event)"></app-search>
+    </div>
+  </nav>
+  <div class="row content">
+    <div  class="lesGenres">
+      <div class="genre" *ngFor="let gen of genre" (click)="onClick(gen)"><img src="{{gen.url}}" alt=""><div class="text">{{gen.ref}}</div></div>
+    </div>
     <h1> {{ titlePage }} </h1>
-    <div>
-        <app-album-details [album]="selectedAlbum" [list]="selectedListe">  </app-album-details>
+    <div class="col-sm-4 video">
+      <app-album-details [album]="selectedAlbum" (onPlay)="playParent($event)" class="sticky"> </app-album-details>
     </div>
-    <div class="lesCards">
-        <div class="card" *ngFor="let album of albums" class="liAlbums">
-            <div class="genre">
-                {{album.ref}}
-            </div>
-            <div class="card-body">
-                <h3> {{album.title}} </h3>
-                <p>{{album.description}}</p>
-                <a href="#" *ngFor="let tag of album.tags" class="tag"> {{tag}} </a>
-                <div class="lang-like-dur">
-                    <a href="#" role="button">fr</a>
-                    <img class="glyph-icon" src="./assets/svg/si-glyph-heart.svg" />
-                    <small>{{album.like}}</small>
-                    <img class="glyph-icon" src="./assets/svg/si-glyph-timer.svg" />
-                    <small>{{album.duration}} min</small>
-                    <button class="view" (click)="onSelect(album)"> View More</button>
-                </div>
-            </div>
+    <div class="col-sm-8 music">
+      <nav aria-label="Page navigation example" class="pagination">
+        <ul class="pagination justify-content-center">
+          <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1">Previous</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#" (click)="albums = page1">1</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#" (click)="albums = page2">2</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#" (click)="albums = page3">3</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#">Next</a>
+          </li>
+        </ul>
+      </nav>
+      <ng-container *ngIf="albums.length; else notfound">
+          <div class="card" *ngFor="let album of albums; let i = index">
+          <div class="card-header"  id="{{album.id}}">
+            {{ i + 1 }} {{album.ref}}
+            <a role="button" class="view btn btn-outline-dark" (click)="onSelect(album)"
+            *ngIf="album.status === 'on'">Play</a>
+          </div>
+          <div class="card-body">
+            <a class="card-title" routerLink="/album/{{album.id}}" (click)="onSelect(album)"> {{album.title}} </a>
+            <p class="card-text">{{album.description}}</p>
+            <a href="#" *ngFor="let tag of album.tags" class="btn btn-primary"> {{tag}} </a> <br>
+            <a href="#" role="button" class="btn btn-outline-primary">fr</a>
+            <img class="glyph-icon" src="./assets/svg/si-glyph-heart.svg" />
+            <small>{{album.like}}</small>
+            <img class="glyph-icon" src="./assets/svg/si-glyph-timer.svg" />
+            <small>{{album.duration}} min</small>
+            <a role="button" class="view btn btn-outline-dark" (click)="onSelect(album)"> View More</a>
+          </div>
+        </div>
+      </ng-container>
+      <ng-template #notfound>
+        <div class="notfound">
+          <p>404</p> <p>Album Not Found</p>
+          <p class="par">voulez vous jouer à un jeu à la place ?</p>
+          <a href="https://charcrede.github.io/casse/" class="par a btn btn-outline-primary" target="_blank">cliquez pour jouer 🧩</a>
+        </div>
+      </ng-template>
     </div>
-    </div>
-</main>
-
+  </div>
 </div>
+
+
+<!-- 
+  *ngFor
+  Lorsque nous utilisons la directive *ngFor, Angular cré un ensemble de variables pour chaque itération. Les variables crées sont :
+  index: qui stock l'index
+  first: boléenne qui indique si l'élément est le premier
+  last: contraire de "first"
+  even: booléenne qui indique si l'indice de l'élément actuelle est paire
+  odd: contraire de "even"
+ -->
