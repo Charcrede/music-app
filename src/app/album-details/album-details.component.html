@@ -5,10 +5,11 @@
             <h5 class="card-title"> {{album.title}}</h5>
             <p>Name : {{album.name}}</p>
             <p class="card-text">{{album.ref}}</p>
-            <a class="btn btn-primary" (click)="play(album)">Play >> </a>
-            <a class="btn btn-primary mx-3" (click)="aleatoire()">Aleatoire </a>
+            <a class="btn-primary fas fa-play random" (click)="play(album)"></a>
+            <a class="random btn-primary mx-3 fas fa-random" (click)="aleatoire()"> </a>
+            <a class="ferme fas fa-close" (click)="hider(seen)"> </a>
         </div>
-        <ul class="list-group">
+        <ul class="list-group" *ngIf="seen">
             <li *ngFor="let li of liste" class="list-group-item"> {{li}}</li>
         </ul>
     </div>

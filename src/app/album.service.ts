@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { Album, List } from 'src/album';
+import { environment } from 'src/environment/environment';
 import { ALBUMS, ALBUM_LISTS } from "./mock-albums/mock-albums";
 
 @Injectable({
@@ -8,13 +10,14 @@ import { ALBUMS, ALBUM_LISTS } from "./mock-albums/mock-albums";
 export class AlbumService {
   albums: Album[] = ALBUMS
   lists: List[] = ALBUM_LISTS;
-  newAlbums:Album[] = [];
+  newAlbums: Album[] = [];
   selectedAlbum!: Album;
   selectedListe!: string[];
-  selectedObject!:List
+  selectedObject!: List;
+  sendCurrentNumberPage = new Subject<number>();
   constructor() { };
   getAlbums() {
-    return this.albums.sort((a:Album, b:Album) => b.duration - a.duration);
+    return this.albums.sort((a: Album, b: Album) => b.duration - a.duration);
   };
   getAlbum(id: string): Album {
     this.albums.forEach(el => {
@@ -41,17 +44,27 @@ export class AlbumService {
       }
     };
   }
-  count(){
+  count() {
     return this.albums.length
   };
-  paginate(start: number, end:number):Album[]{
+  paginate(start: number, end: number): Album[] {
     this.getAlbums()
     return this.albums.slice(start, end);
   }
-  search(word: string): Album[]{
+  search(word: string): Album[] {
     let re = new RegExp(word.trim(), "g");
     return this.albums.filter(album => album.title.match(re));
   };
+  /**
+   *@param numberPage
+   *@return
+  */
+  paginateNumberPage(): number {
+    return environment.numberPage;
+  }
+  currentPage(numberPage: number){
+    return this.sendCurrentNumberPage.next(numberPage);
+  }
 }
 /**
  * #Service

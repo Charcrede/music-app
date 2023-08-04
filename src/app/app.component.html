@@ -1,6 +1,31 @@
 <style>
 
 </style>
-<html>
+<html [ngClass]="{'home': home, 'other': other}">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <a routerLink="/albums" class="disqueText"><img src="../../assets/media/website_logo.svg" alt="" class="disque">
+    <div>
+      <h3 class="logoText">Sound It</h3><br>
+      <p class="logoText">Feel the sound</p>
+    </div>
+  </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link btn btn-outline-light" routerLink="/albums" routerLinkActive="active" (click)="bgChangeHome()">Home
+          </a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link btn btn-outline-light" routerLink="/login" routerLinkActive="active" (click)="bgChangeOther(true)">Se connecter
+          </a>
+        </li>
+      </ul>
+      
+    </div>
+  </nav>
   <router-outlet></router-outlet>
 </html>

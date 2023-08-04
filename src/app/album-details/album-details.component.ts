@@ -9,9 +9,11 @@ import { ALBUM_LISTS } from "../mock-albums/mock-albums";
   styleUrls: ['./album-details.component.css']
 })
 export class AlbumDetailsComponent implements OnInit {
+  seen: boolean = true;
   @Input() album!: Album;
   // @Input() list!: List;
   @Output() onPlay: EventEmitter<Album> = new EventEmitter();
+  @Output() hide: EventEmitter<boolean> = new EventEmitter();
   lists: List[] = ALBUM_LISTS;
   liste!: string[] | undefined;
   listeRandom: string[] = [];
@@ -20,6 +22,9 @@ export class AlbumDetailsComponent implements OnInit {
   ) { }
   play(album: Album) {
     this.onPlay.emit(album);
+  }
+  hider(seen: boolean) {
+    this.hide.emit(seen);
   }
   ngOnInit(): void {
     // console.log(this.album);
@@ -30,25 +35,17 @@ export class AlbumDetailsComponent implements OnInit {
     }
   }
   aleatoire() {
-    let listeCop = this.liste?.slice(0, this.liste.length);
+    let listeCop: string[] = [...this.liste!];
     this.listeRandom = [];
-    if (listeCop) {
-      let count = listeCop?.length
-      for (let i = listeCop.length; i >= 0; i--) {
-      let  id = Math.floor(Math.random() * count)
-        if (listeCop) {
-          listeCop.forEach((el, u) => {
-            if (listeCop) {
-              if (id === u && el) {
-                this.listeRandom.push(el);
-                listeCop.splice(u, 1);
-              } else {
-                i = listeCop.length
-              }
-            }
-          });
-        }
-      }
+    let count: number = listeCop.length
+    for (let i = listeCop?.length; i >= 0; i--) {
+      let id = Math.floor(Math.random() * count)
+      listeCop?.forEach((el, u) => {
+        if (id === u && el) {
+          this.listeRandom.push(el);
+          listeCop?.splice(u, 1);
+        } else {i = listeCop?.length}
+      });
     }
     return this.liste = this.listeRandom
   }

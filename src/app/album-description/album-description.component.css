@@ -8,10 +8,10 @@
     color: white;
 }
 .body{
-    height: 100vh;
-    background: url(../../assets/media/background_image/2725544.jpg)no-repeat fixed center /cover;
+    height: 90vh;
     overflow: hidden;
     padding-inline: 200px;
+    padding-top: 100px;
 }
 .card{
     background-color: rgba(255, 255, 255, .8);
@@ -23,6 +23,9 @@
 }
 .nav-link:hover{
     color: black;
+}
+.pagination a{
+    margin: 0;
 }
 .disque{
     width: 60px;

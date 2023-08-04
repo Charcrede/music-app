@@ -12,6 +12,7 @@ import { AlbumDescriptionComponent } from './album-description/album-description
 import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { OpenCloseComponent } from './open-close/open-close.component';
+import { PaginateComponent } from './paginate/paginate.component';
 
 const albumsRoutes: Routes = [
   {
@@ -49,6 +50,7 @@ const albumsRoutes: Routes = [
     SearchComponent,
     AlbumDescriptionComponent,
     LoginComponent,
+    PaginateComponent,
     PageNotFoundComponent
   ],
   imports: [

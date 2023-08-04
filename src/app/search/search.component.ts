@@ -27,4 +27,5 @@ export class SearchComponent implements OnInit{
   onChangeEmit($event: string){
     this.result.emit(this.service.search($event))
   }
+
 }
