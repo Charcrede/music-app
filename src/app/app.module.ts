@@ -13,6 +13,7 @@ import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { OpenCloseComponent } from './open-close/open-close.component';
 import { PaginateComponent } from './paginate/paginate.component';
+import { AudioPlayerComponent } from './audio-player/audio-player.component';
 
 const albumsRoutes: Routes = [
   {
@@ -51,7 +52,8 @@ const albumsRoutes: Routes = [
     AlbumDescriptionComponent,
     LoginComponent,
     PaginateComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    AudioPlayerComponent
   ],
   imports: [
     BrowserModule,

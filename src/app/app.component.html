@@ -24,8 +24,9 @@
           </a>
         </li>
       </ul>
-      
+      <p *ngIf="count">{{count}} secondes</p>
     </div>
   </nav>
+  <app-audio-player></app-audio-player>
   <router-outlet></router-outlet>
 </html>

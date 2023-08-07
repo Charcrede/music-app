@@ -15,6 +15,7 @@ export class AlbumService {
   selectedListe!: string[];
   selectedObject!: List;
   sendCurrentNumberPage = new Subject<number>();
+  subjectAlbum = new Subject<Album>();
   constructor() { };
   getAlbums() {
     return this.albums.sort((a: Album, b: Album) => b.duration - a.duration);
