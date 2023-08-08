@@ -1,5 +1,4 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { NgForm } from "@angular/forms";
 import { AlbumService } from "../album.service";
 import { Album } from "../../album";
 
@@ -9,7 +8,7 @@ import { Album } from "../../album";
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit{
-  word!:string;
+  word:string = "202020";
   @Output() result: EventEmitter<Album[]> = new EventEmitter();
   constructor(private service: AlbumService){}
   ngOnInit(): void { 

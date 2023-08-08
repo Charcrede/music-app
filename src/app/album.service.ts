@@ -17,6 +17,27 @@ export class AlbumService {
   sendCurrentNumberPage = new Subject<number>();
   subjectAlbum = new Subject<Album>();
   constructor() { };
+  /**
+   * Méthode qui permet de changer le statut d'un album à "on"
+   * @param album : l'album dons le statut doit passer à "on"
+   */
+  switchOn(album: Album){
+    for (let i = 0; i < this.albums.length; i++) {
+      if (this.albums[i].id !== album.id) {
+        this.albums[i].status = 'off'
+      } else {
+        this.albums[i].status = 'on'
+      }
+    };
+    this.subjectAlbum.next(album);
+  }
+  /**
+   * Méthode qui permet de changer le statut d'un album à "off"
+   * @param album : l'album dons le statut doit passer à "off"
+  */
+ switchOff(album: Album){
+   album.status = "off" ;
+  }
   getAlbums() {
     return this.albums.sort((a: Album, b: Album) => b.duration - a.duration);
   };

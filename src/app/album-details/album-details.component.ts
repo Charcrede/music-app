@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { Album, List } from 'src/album';
 import { AlbumService } from '../album.service';
 import { ALBUM_LISTS } from "../mock-albums/mock-albums";
@@ -8,7 +8,7 @@ import { ALBUM_LISTS } from "../mock-albums/mock-albums";
   templateUrl: './album-details.component.html',
   styleUrls: ['./album-details.component.css']
 })
-export class AlbumDetailsComponent implements OnInit {
+export class AlbumDetailsComponent implements OnInit{
   seen: boolean = true;
   @Input() album!: Album;
   // @Input() list!: List;
@@ -22,6 +22,7 @@ export class AlbumDetailsComponent implements OnInit {
   ) { }
   play(album: Album) {
     this.onPlay.emit(album);
+    this.service.switchOn(album);
   }
   hider(seen: boolean) {
     this.hide.emit(seen);
